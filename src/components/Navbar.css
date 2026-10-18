@@ -1,0 +1,113 @@
+/* Naviqasiya paneli */
+.nav {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(14px, 1.7vw, 22px) var(--gutter);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px; 
+  font-family: var(--font-display);
+  font-size: clamp(22px, 1.8vw, 26px); 
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.nav__logo { 
+  width: 34px;  
+  height: 34px; 
+  object-fit: contain; 
+  border-radius: 8px; 
+}
+
+/* Sağ tərəfdəki qrup (Linklər və Burger) */
+.nav__right-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Naviqasiya düymələri */
+.nav__pill {
+  display: none;
+}
+
+.nav__pill ul {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Düymələri tam "Launch App" ölçüsünə gətiririk */
+.nav__pill a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72em 1.35em; /* Launch App ölçüsü */
+  border-radius: 999px; /* Tam dairəvi */
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1a103c; 
+  background: #fff; 
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  
+  /* Mouse üstünə gələndəki "çıxan" 3D animasiya */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              background 0.3s ease;
+  will-change: transform;
+}
+
+.nav__pill a:hover {
+  transform: translateY(-5px) scale(1.05); 
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.4); 
+  color: #000;
+}
+
+.nav__burger {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  background: rgba(28, 10, 2, 0.4);
+  backdrop-filter: blur(10px);
+}
+.nav__burger svg { width: 20px; height: 20px; }
+
+/* Mobil menyu */
+.nav__sheet {
+  position: fixed;
+  inset: 68px 12px auto;
+  padding: 18px;
+  border: 1px solid var(--hair);
+  border-radius: 18px;
+  background: rgba(18, 5, 0, 0.94);
+  backdrop-filter: blur(20px);
+}
+.nav__sheet ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.nav__sheet a {
+  display: block;
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.86);
+}
+.nav__sheet a:hover { background: rgba(255, 255, 255, 0.07); }
+
+@media (min-width: 940px) {
+  .nav__pill { display: block; }
+  .nav__burger { display: none; }
+}
